@@ -54,9 +54,11 @@ const HomePage = () => {
             className="animate-bounce mt-6 md:mt-4"
             size={80}
           />
-          <button className="btn btn-soft btn-secondary w-fit p-2 px-6 py-2 text-lg md:text-xl mt-4 md:mt-3">
-            See more
-          </button>
+          <a href="#about">
+            <button className="btn btn-soft btn-secondary w-fit p-2 px-6 py-2 text-lg md:text-xl mt-4 md:mt-3">
+              See more
+            </button>
+          </a>
         </div>
       </div>
     </div>

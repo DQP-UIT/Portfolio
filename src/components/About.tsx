@@ -113,11 +113,11 @@ const techIcons = [
   },
 ];
   return (
-    <div className="grid h-fit font-mono">
+    <div className="grid h-fit w-3/4 font-mono">
       {/* Information */}
-      <div className="row-start-1 h-fit mb-2 md:mb-4 flex flex-col justify-start items-start w-full md:w-full ">
+      <div className="row-start-1 h-fit mb-16 md:mb-28 flex flex-col justify-start items-start w-full md:w-full ">
         <span className="text-2xl mb-2 font-semibold">Introduction</span>
-        <p className="w-full text-xl bg-gray-700 p-4 rounded-lg md:w-2/3">
+        <p className="w-full text-xl bg-gray-700 p-4 rounded-lg md:w-full">
           An aspiring full-stack web developer with a strong foundation in
           modern web technologies like React, Next.js, Node.js, and TypeScript.
           I’m excited to apply for the Web Developer position, where I can
@@ -129,30 +129,34 @@ const techIcons = [
         </p>
       </div>
       {/* Abilites */}
-      <div className="row-start-2 flex flex-col justify-start items-start h-fit w-full md:w-full">
+      <div className="row-start-2 flex flex-col justify-start items-start h-fit w-full">
         <span className="text-2xl mb-2 font-semibold">Abilities</span>
-        <div className="grid h-fit md:grid-flow-col-dense md:grid-rows-2 gap-x-6">
+
+        {/* Grid layout responsive */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4 w-full">
           {abilities.map((ability) => (
             <div
               key={ability.id}
-              className="p-2 mb-4 grid grid-flow-col h-fit md:mb-6 w-2xs md:w-xl md:p-4 bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 rounded-2xl shadow-[4px_7px_26px_0px_rgba(0,0,0,0.12)]"
+              className="p-4 flex flex-col md:flex-row items-start md:items-center bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 rounded-2xl shadow-md w-full"
             >
               {ability.icon && (
-                <div className="row-span-2 p-2 mr-2 flex items-center justify-center">
+                <div className="p-2 mr-4 flex items-center justify-center text-3xl">
                   {ability.icon}
                 </div>
               )}
-
-              <div className="text-2xl font-semibold row-start-1">
-                {ability.name}
+              <div className="flex flex-col">
+                <div className="text-xl font-semibold">{ability.name}</div>
+                <div className="text-sm text-gray-300">
+                  {ability.description}
+                </div>
               </div>
-              <div className="row-start-2">{ability.description}</div>
             </div>
           ))}
         </div>
       </div>
+
       {/* Techstack */}
-      <div className="row-start-3 flex flex-col mt-4 md:mt-8 justify-start items-start w-full md:w-full">
+      <div className="row-start-3 flex flex-col mt-16 md:mt-28 justify-start items-start w-full md:w-full">
         <span className="text-2xl mb-2 font-semibold">Techstack</span>
         <div className="relative w-full p-4 h-[80px] overflow-hidden flex items-center justify-center rounded-xl">
           {/* Motion 1 */}
@@ -173,7 +177,7 @@ const techIcons = [
                 key={`icon1-${idx}`}
                 className="flex-shrink-0  mx-4 min-w-[100px] flex flex-col items-center justify-center"
               >
-                <icon.icon size={60} color= {icon.color}/>
+                <icon.icon size={60} color={icon.color} />
                 <span className="text-sm text-white font-semibold">
                   {icon.name}
                 </span>
