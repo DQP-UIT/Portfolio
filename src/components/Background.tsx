@@ -1,66 +1,103 @@
+"use client";
+
+import React, { useEffect, useRef } from "react";
 import * as THREE from "three";
 
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(
-  75,
-  window.innerWidth / window.innerHeight,
-  0.1,
-  1000
-);
+const ThreeBackGround: React.FC = () => {
+  const mountRef = useRef<HTMLDivElement | null>(null);
 
-const renderer = new THREE.WebGLRenderer();
-renderer.setSize(window.innerWidth, window.innerHeight);
-document.body.appendChild(renderer.domElement);
+  useEffect(() => {
+    if (!mountRef.current) return;
 
-const sphere = new THREE.SphereGeometry(0.5, 16, 8);
+    // Tạo scene, camera, renderer
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(
+      75,
+      window.innerWidth / window.innerHeight,
+      0.1,
+      1000
+    );
+    camera.position.z = 50;
 
-//lights
+    const renderer = new THREE.WebGLRenderer({ alpha: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    mountRef.current.appendChild(renderer.domElement);
 
-const light1 = new THREE.PointLight(0xff0040, 400);
-light1.add(
-  new THREE.Mesh(sphere, new THREE.MeshBasicMaterial({ color: 0xff0040 }))
-);
-scene.add(light1);
+    renderer.domElement.style.position = "absolute";
+    renderer.domElement.style.top = "0";
+    renderer.domElement.style.left = "0";
+    renderer.domElement.style.zIndex = "-1";
 
-const light2 = new THREE.PointLight(0x0040ff, 400);
-light2.add(
-  new THREE.Mesh(sphere, new THREE.MeshBasicMaterial({ color: 0x0040ff }))
-);
-scene.add(light2);
+    const createLight = (color: number) => {
+      const light = new THREE.PointLight(color, 0, 100);
+      scene.add(light);
+      return light;
+    };
 
-const light3 = new THREE.PointLight(0x80ff80, 400);
-light3.add(
-  new THREE.Mesh(sphere, new THREE.MeshBasicMaterial({ color: 0x80ff80 }))
-);
-scene.add(light3);
+    const lights: THREE.PointLight[] = [];
+    const lightColor = 0xccff33;
+    for (let i = 0; i < 10; i++) {
+      const light = createLight(lightColor);
+      lights.push(light);
+    }
 
-const light4 = new THREE.PointLight(0xffaa00, 400);
-light4.add(
-  new THREE.Mesh(sphere, new THREE.MeshBasicMaterial({ color: 0xffaa00 }))
-);
-scene.add(light4);
+    const createStars = () => {
+      const geometry = new THREE.BufferGeometry();
+      const vertices = [];
+      for (let i = 0; i < 5000; i++) {
+        const x = Math.random() * 200 - 100;
+        const y = Math.random() * 200 - 100;
+        const z = Math.random() * 200 - 100;
+        vertices.push(x, y, z);
+      }
+      geometry.setAttribute(
+        "position",
+        new THREE.Float32BufferAttribute(vertices, 3)
+      );
 
-function renderLight() {
-  const time = Date.now() * 0.0005;
-  light1.position.x = Math.sin(time * 0.7) * 30;
-  light1.position.y = Math.cos(time * 0.5) * 40;
-  light1.position.z = Math.cos(time * 0.3) * 30;
+      const material = new THREE.PointsMaterial({
+        color: 0xffffff,
+        size: 0.002,
+      });
+      return new THREE.Points(geometry, material);
+    };
 
-  light2.position.x = Math.cos(time * 0.3) * 30;
-  light2.position.y = Math.sin(time * 0.5) * 40;
-  light2.position.z = Math.sin(time * 0.7) * 30;
+    const stars = createStars();
+    scene.add(stars);
 
-  light3.position.x = Math.sin(time * 0.7) * 30;
-  light3.position.y = Math.cos(time * 0.3) * 40;
-  light3.position.z = Math.sin(time * 0.5) * 30;
+    const animate = () => {
+      const time = Date.now() * 0.0005;
 
-  light4.position.x = Math.sin(time * 0.3) * 30;
-  light4.position.y = Math.cos(time * 0.7) * 40;
-  light4.position.z = Math.sin(time * 0.5) * 30;
-}
+      lights.forEach((light, index) => {
+        const offset = index * 0.4;
+        light.intensity = 400;
+        light.position.set(
+          Math.sin(time * (0.7 + offset)) * 30,
+          Math.cos(time * (0.5 + offset)) * 40,
+          Math.sin(time * (0.3 + offset)) * 30
+        );
+      });
 
-function animate() {
-  renderLight();
-  renderer.render(scene, camera);
-}
-renderer.setAnimationLoop(animate);
+      stars.rotation.x += 0.001;
+      stars.rotation.y += 0.001;
+
+      renderer.render(scene, camera);
+    };
+
+    renderer.setAnimationLoop(animate);
+
+    return () => {
+      renderer.dispose();
+      mountRef.current?.removeChild(renderer.domElement);
+    };
+  }, []);
+
+  return (
+    <div
+      ref={mountRef}
+      className="fixed top-0 left-0 w-full h-full pointer-events-none"
+    />
+  );
+};
+
+export default ThreeBackGround;

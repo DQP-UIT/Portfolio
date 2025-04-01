@@ -7,13 +7,13 @@ import Contact from "@/components/Contact";
 export default function Home() {
   return (
     <div
-      className="grid grid-rows-[100px_1fr_100px] min-h-screen p-8 pb-20 gap-16 sm:pl-20 sm:pr-20 font-[family-name:var(--font-geist-sans)]"
+      className="grid grid-rows-[100px_1fr_100px] min-h-screen p-8 pb-20 gap-16 sm:pl-20 sm:pr-20 font-[family-name:var(--font-geist-sans)] bg-gray-950"
       data-theme="synthwave"
     >
-      <header className="flex flex-wrap row-start-1 w-full sticky top-0 z-50 bg-base-100/80 backdrop-blur-sm">
+      <header className="flex flex-wrap row-start-1 w-full h-fit sticky top-0 z-50 shadow-lg shadow-[#2A0E61]/50 bg-[#03001417] backdrop-blur-md">
         <Header />
       </header>
-      <main className="flex flex-col gap-[80px] row-start-2 items-center sm:items-center">
+      <main className="flex flex-col w-full gap-[80px] row-start-2 items-center sm:items-center">
         <section id="home" className="w-full min-h-screen pt-20 -mt-20">
           <HomePage />
         </section>

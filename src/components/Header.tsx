@@ -12,7 +12,11 @@ const Header = () => {
 
   return (
     <div className="w-full flex flex-wrap justify-between">
-      <div></div>
+      <div className="avatar">
+        <div className="w-16 rounded-full">
+          <img src="/Songoku.jpg" />
+        </div>
+      </div>
       <div>
         <CategoryBar categories={categories} />
       </div>

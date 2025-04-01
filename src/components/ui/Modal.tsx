@@ -1,22 +1,59 @@
-import React from "react";
+"use client";
 
-const Modal = () => {
+import React, { useRef } from "react";
+import { ProjectRepo } from "../types";
+import { SiGithub } from "react-icons/si";
+import { FaPlusCircle } from "react-icons/fa";
+
+interface ProjectModalProps {
+  repo: ProjectRepo;
+}
+
+const Modal: React.FC<ProjectModalProps> = ({ repo }) => {
+  const modalRef = useRef<HTMLDialogElement | null>(null);
   return (
     <div>
-      {/* Open the modal using document.getElementById('ID').showModal() method */}
       <button
-        className="btn"
-        onClick={() => {
-          const modal = document.getElementById("my_modal_2");
-          if (modal instanceof HTMLDialogElement) modal.showModal();
-        }}
+        className="btn btn-neutral flex items-center justify-center gap-2 p-2 w-fit"
+        onClick={() => modalRef.current?.showModal()}
       >
-        open modal
+        <FaPlusCircle size={20} />
+        More
       </button>
-      <dialog id="my_modal_2" className="modal">
-        <div className="modal-box">
-          <h3 className="font-bold text-lg">Hello!</h3>
-          <p className="py-4">Press ESC key or click outside to close</p>
+      <dialog ref={modalRef} className="modal">
+        <div className="modal-box flex flex-wrap justify-center items-center">
+          <figure className="px-4 pt-4">
+            <img
+              src={typeof repo.preview === "string" ? repo.preview : ""}
+              alt={repo.name}
+              className="rounded-xl object-cover w-full aspect-video"
+            />
+          </figure>
+          <h3 className="font-bold text-lg mt-4 p-2 w-full text-center">
+            {repo.name}
+          </h3>
+          <p className="p-2 mt-4">{repo.description}</p>
+          <div className="flex flex-wrap justify-center gap-2 mt-2">
+            {repo.techstack.map((tech, idx) => (
+              <div
+                key={idx}
+                className="text-xs md:text-sm font-semibold bg-gray-200 px-3 py-1 rounded-full"
+              >
+                {tech}
+              </div>
+            ))}
+          </div>
+          <a
+            href={repo.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-4"
+          >
+            <button className="btn btn-secondary flex items-center justify-center gap-2 p-2 w-fit">
+              <SiGithub size={20} />
+              <span className="text-sm md:text-base">Github</span>
+            </button>
+          </a>
         </div>
         <form method="dialog" className="modal-backdrop">
           <button>close</button>
