@@ -43,14 +43,17 @@ Follow these steps to set up the project locally:
     ```bash
     git clone https://github.com/your-username/portfolio.git
 2. Navigate to the project directory:
+    ```bash
     cd portfolio
 3. Install dependencies:
+    ```bash
     npm install
-    # or
+    or
     yarn install
 4. Start the development server:
+    ```bash
     npm run dev
-    # or
+    or
     yarn dev
 5. Open your browser and navigate to:
     http://localhost:3000
