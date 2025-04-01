@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio Website
 
-## Getting Started
+A modern and responsive portfolio website built with **Next.js**, **Tailwind CSS**, and **Three.js**. This project showcases your skills, projects, and contact information in an interactive and visually appealing way.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Responsive Design**: Fully responsive layout for all devices.
+- **Interactive Background**: A dynamic Three.js background for a unique user experience.
+- **Smooth Navigation**: Scroll-based navigation with smooth transitions.
+- **Contact Form**: Integrated contact form with EmailJS for direct communication.
+- **Custom Animations**: Type animations and interactive elements.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Demo
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+You can view the live demo of the project [here](#).
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## Technologies Used
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Next.js**: React framework for server-side rendering and static site generation.
+- **Tailwind CSS**: Utility-first CSS framework for styling.
+- **Three.js**: 3D rendering library for the interactive background.
+- **EmailJS**: Service for sending emails directly from the contact form.
+- **React Icons**: Icon library for modern and customizable icons.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## Installation
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Follow these steps to set up the project locally:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Prerequisites
+
+- **Node.js** (v16 or higher)
+- **npm** or **yarn**
+
+### Steps
+
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/your-username/portfolio.git
+2. Navigate to the project directory:
+    cd portfolio
+3. Install dependencies:
+    npm install
+    # or
+    yarn install
+4. Start the development server:
+    npm run dev
+    # or
+    yarn dev
+5. Open your browser and navigate to:
+    http://localhost:3000
+
+### Customization
+
+#### Update Personal Information
+- Open the `Header.tsx` file and update the `categories` array with your desired navigation links.
+- Update the `Home.tsx`, `About.tsx`, `Project.tsx`, and `Contact.tsx` files with your personal information, projects, and contact details.
+
+#### Change Background
+- Replace the video file in the `public/` directory (e.g., `blackhole.webm`) with your own video.
+- Update the `src/components/Background.tsx` file if needed.
