@@ -15,11 +15,13 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ repo }) => {
     >
       {/* Ảnh preview */}
       <figure className="px-4 pt-4">
-        <img
-          src={typeof repo.preview === "string" ? repo.preview : ""}
-          alt={repo.name}
-          className="rounded-xl object-cover w-full aspect-video"
-        />
+        <div className="w-full aspect-video rounded-xl overflow-hidden bg-gray-800/20 flex items-center justify-center">
+          <img
+            src={typeof repo.preview === "string" ? repo.preview : ""}
+            alt={repo.name}
+            className="max-w-full max-h-full object-contain rounded-xl"
+          />
+        </div>
       </figure>
 
       {/* Nội dung */}

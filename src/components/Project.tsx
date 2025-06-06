@@ -10,9 +10,9 @@ const Project = () => {
       name: "Web-SieuThiBanVe",
       description:
         "Một website trình bày các bản vẽ kiến trúc, cho phép người dùng duyệt, đặt và tải xuống các bản thiết kế.",
-      preview: "/DesignsWeb.png",
+      preview: "/DesignWare.png",
       techstack: ["JavaScript", "Vite", "Tailwind CSS", "ESLint", "Prettier"],
-      link: "https://github.com/DQP-UIT/SE121-Web-SieuThiBanVe",
+      link: "https://github.com/DQP-UIT/Sieu-Thi-Ban-Ve-FE",
     },
     {
       id: 2,
