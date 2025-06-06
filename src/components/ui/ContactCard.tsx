@@ -82,8 +82,8 @@ const ContactCard = () => {
               </a>
               <a
                 className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-                href="https://drive.google.com/uc?export=download&id=1iRUdNUrMU0K4GQrX0KbhE8--jArI__Bi"
-                download="YourName_CV.pdf"
+                href="https://drive.google.com/uc?export=download&id=17uWZvA_UnUd_cDuDv_em71uO2i_SKQc1"
+                download="DQP_CV.pdf"
               >
                 <FaDownload size={20} />
                 Download my CV
